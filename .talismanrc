@@ -1,4 +1,10 @@
 fileignoreconfig:
 - filename: mvnw
   checksum: 9a0e968807e91279b4856750466e5aab9eeac7305e4ec8463979cb7cb0525f67
+- filename: src/main/resources/application.properties
+  checksum: e697134bb4a514ba9ab451a2961c026fea57c1da4ce919e1e5f20e82a96220ae
+- filename: src/main/resources/db/migration/V1.1__CREATE_ITEM_TABLE.sql
+  checksum: 4932bf7f6ea68aea44beeeb99aaaacce694e2051caf26e57d3aec6017231061a
+- filename: src/main/resources/db/migration/V1.2__CREATE_LIST_TABLE.sql
+  checksum: c674ecc318c19f21b269113355e486335656854c0605f257cc61a4172b7d53b3
 version: "1.0"
