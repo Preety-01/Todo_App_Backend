@@ -7,4 +7,10 @@ fileignoreconfig:
   checksum: 4932bf7f6ea68aea44beeeb99aaaacce694e2051caf26e57d3aec6017231061a
 - filename: src/main/resources/db/migration/V1.2__CREATE_LIST_TABLE.sql
   checksum: c674ecc318c19f21b269113355e486335656854c0605f257cc61a4172b7d53b3
+- filename: src/main/resources/db/migration/V1.3__ALTER_LIST_TABLE.sql
+  checksum: ed6a34a398ded2ef4401b2a535a4d3f10f912ba0f68e318050a1c5cf186c672d
+- filename: src/main/resources/db/migration/V1.4__ALTER_ITEM_TABLE.sql
+  checksum: 6498574a51ee2482ccf193ec48f5d37a7ca494e6b584c44d78a72e004df036fe
+- filename: src/main/resources/db/migration/V1.5__ALTER_LIST_TABLE.sql
+  checksum: d4ba5329ee3fd4c8a92c665ec36b53a55f36cbf3fcf0c47b63a631548d0691a4
 version: "1.0"

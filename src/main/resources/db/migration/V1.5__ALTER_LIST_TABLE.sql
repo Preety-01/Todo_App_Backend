@@ -1,0 +1,1 @@
+ALTER TABLE list ADD CONSTRAINT title_unq UNIQUE (title);
