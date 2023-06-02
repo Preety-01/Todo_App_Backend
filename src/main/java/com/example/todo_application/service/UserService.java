@@ -18,7 +18,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Integer addUser(UserDTO userDTO) throws UserAlreadyExistsException {
+    public void addUser(UserDTO userDTO) throws UserAlreadyExistsException {
         Optional<User> optionalUser = userRepository.findById(userDTO.getUser_id());
         if (optionalUser.isPresent()) {
             throw new UserAlreadyExistsException(USER_ALREADY_EXISTS_MESSAGE);
@@ -33,6 +33,5 @@ public class UserService {
                 .password(userDTO.getPassword())
                 .build();
         userRepository.save(newUser);
-        return newUser.getUser_id();
     }
 }

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class CustomExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorInfo> exceptionHandler(Exception exception){
+    public ResponseEntity<ErrorInfo> exceptionHandler(Exception exception) {
         ErrorInfo errorInfo = ErrorInfo.builder()
                 .timestamp(LocalDate.now())
                 .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
@@ -20,14 +20,24 @@ public class CustomExceptionHandler {
         return new ResponseEntity<ErrorInfo>(errorInfo, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<ErrorInfo> userAlreadyExistsExceptionHandler(
-            UserAlreadyExistsException userAlreadyExistsException){
+    @ExceptionHandler({UserAlreadyExistsException.class, ListAlreadyExistsException.class,
+            ItemAlreadyExistsException.class})
+    public ResponseEntity<ErrorInfo> alreadyExistsExceptionHandler(Exception exception) {
         ErrorInfo errorInfo = ErrorInfo.builder()
                 .timestamp(LocalDate.now())
                 .statusCode(HttpStatus.CONFLICT.value())
-                .errorMessage(userAlreadyExistsException.getMessage())
+                .errorMessage(exception.getMessage())
                 .build();
         return new ResponseEntity<ErrorInfo>(errorInfo, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler({UserDoesNotExistsException.class, ListDoesNotExistsException.class})
+    public ResponseEntity<ErrorInfo> doesNotExistsExceptionHandler(Exception exception) {
+        ErrorInfo errorInfo = ErrorInfo.builder()
+                .timestamp(LocalDate.now())
+                .statusCode(HttpStatus.NOT_FOUND.value())
+                .errorMessage(exception.getMessage())
+                .build();
+        return new ResponseEntity<ErrorInfo>(errorInfo, HttpStatus.NOT_FOUND);
     }
 }

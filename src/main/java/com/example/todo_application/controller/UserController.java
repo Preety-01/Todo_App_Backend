@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.example.todo_application.utility.Constants.NEW_USER_SUCCESSFULLY_CREATED_MESSAGE;
+
 @RestController
 public class UserController {
 
@@ -19,9 +21,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(value = "/users")
-    public ResponseEntity<Object> createUser(@Valid @RequestBody UserDTO userDTO) throws UserAlreadyExistsException {
-        Integer newUserId = userService.addUser(userDTO);
-        String successMessage = "User - " + newUserId + " successfully created";
-        return new SuccessResponseHandler().generateResponse(successMessage, HttpStatus.CREATED);
+    public ResponseEntity<Object> createUser(@Valid @RequestBody UserDTO userDTO)
+            throws UserAlreadyExistsException {
+        userService.addUser(userDTO);
+        return new SuccessResponseHandler().generateResponse(NEW_USER_SUCCESSFULLY_CREATED_MESSAGE, HttpStatus.CREATED);
     }
 }
