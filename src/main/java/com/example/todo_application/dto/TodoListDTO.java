@@ -18,4 +18,6 @@ public class TodoListDTO {
 
     @Size(max = 100)
     private String list_description;
+
+    private UserDTO userDTO;
 }

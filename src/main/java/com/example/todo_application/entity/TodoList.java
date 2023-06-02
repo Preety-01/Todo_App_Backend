@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "list")
-public class ToDoList {
+public class TodoList {
 
     @Id
     private int list_id;
@@ -21,5 +21,9 @@ public class ToDoList {
     private String title;
 
     private String list_description;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "person_id", nullable = false)
+    private User user;
 
 }

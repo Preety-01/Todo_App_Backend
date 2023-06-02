@@ -21,6 +21,6 @@ public class Item {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "list_id", nullable = false)
-    private ToDoList list;
+    private TodoList list;
 
 }

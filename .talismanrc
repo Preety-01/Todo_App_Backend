@@ -13,4 +13,10 @@ fileignoreconfig:
   checksum: 6498574a51ee2482ccf193ec48f5d37a7ca494e6b584c44d78a72e004df036fe
 - filename: src/main/resources/db/migration/V1.5__ALTER_LIST_TABLE.sql
   checksum: d4ba5329ee3fd4c8a92c665ec36b53a55f36cbf3fcf0c47b63a631548d0691a4
+- filename: src/main/resources/db/migration/V1.6__CREATE_USER_TABLE.sql
+  checksum: 78e377ed985ffc2ef62b91d1f16b89df861299052ae9801b746dd98f6e702b76
+- filename: src/main/resources/db/migration/V1.7__ADD_FK_TO_LIST_TABLE.sql
+  checksum: 8be18b979b37d131ffe615daf051e26ec2175c494efc1e96b3d6373fa4db7a31
+- filename: src/main/resources/db/migration/V1.8__ALTER_USER_TABLE.sql
+  checksum: 25d6bd86ed57c9d5e2541215e93e1e94d5b3f0b8e3f9ab641957de6db9c7b3e5
 version: "1.0"

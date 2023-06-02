@@ -17,6 +17,6 @@ public class ItemController {
 
     @PostMapping(value = "/lists/{list_id}/items")
     public Integer createTodoItem(@Valid @RequestBody ItemDTO itemDTO, @PathVariable Integer list_id) {
-        return itemService.addItemToList(itemDTO, list_id);
+        return itemService.addItem(itemDTO, list_id);
     }
 }

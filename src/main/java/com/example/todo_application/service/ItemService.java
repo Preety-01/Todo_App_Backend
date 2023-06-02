@@ -2,7 +2,7 @@ package com.example.todo_application.service;
 
 import com.example.todo_application.dto.ItemDTO;
 import com.example.todo_application.entity.Item;
-import com.example.todo_application.entity.ToDoList;
+import com.example.todo_application.entity.TodoList;
 import com.example.todo_application.repository.ItemRepository;
 import com.example.todo_application.repository.ListRepository;
 import jakarta.transaction.Transactional;
@@ -21,9 +21,9 @@ public class ItemService {
     @Autowired
     private ListRepository listRepository;
 
-    public Integer addItemToList(ItemDTO itemDTO, Integer list_id) {
-        Optional<ToDoList> optionalList = listRepository.findById(list_id);
-        ToDoList existingList = optionalList.orElseThrow(() -> new RuntimeException("List does not exist"));
+    public Integer addItem(ItemDTO itemDTO, Integer list_id) {
+        Optional<TodoList> optionalList = listRepository.findById(list_id);
+        TodoList existingList = optionalList.orElseThrow(() -> new RuntimeException("List does not exist"));
         Item newItem = Item.builder()
                 .item_id(itemDTO.getItem_id())
                 .item_description(itemDTO.getItem_description())
