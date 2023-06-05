@@ -3,8 +3,9 @@ package com.example.todo_application.dto;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -20,4 +21,7 @@ public class TodoListDTO {
     private String list_description;
 
     private UserDTO userDTO;
+
+    @ToString.Exclude
+    private List<TodoListDTO> todoListDTOS;
 }

@@ -20,7 +20,8 @@ public class CustomExceptionHandler {
         return new ResponseEntity<ErrorInfo>(errorInfo, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler({UserAlreadyExistsException.class, ListAlreadyExistsException.class,
+    @ExceptionHandler({UserAlreadyExistsException.class,
+            ListAlreadyExistsException.class,
             ItemAlreadyExistsException.class})
     public ResponseEntity<ErrorInfo> alreadyExistsExceptionHandler(Exception exception) {
         ErrorInfo errorInfo = ErrorInfo.builder()
@@ -31,7 +32,11 @@ public class CustomExceptionHandler {
         return new ResponseEntity<ErrorInfo>(errorInfo, HttpStatus.CONFLICT);
     }
 
-    @ExceptionHandler({UserDoesNotExistsException.class, ListDoesNotExistsException.class})
+    @ExceptionHandler({UserDoesNotExistsException.class,
+            ListDoesNotExistsException.class,
+            UserTableEmptyException.class,
+            ListsNotFoundForUserException.class,
+            ItemNotFoundForListException.class})
     public ResponseEntity<ErrorInfo> doesNotExistsExceptionHandler(Exception exception) {
         ErrorInfo errorInfo = ErrorInfo.builder()
                 .timestamp(LocalDate.now())

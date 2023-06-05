@@ -5,10 +5,10 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Builder
 @Data
@@ -37,4 +37,7 @@ public class UserDTO {
     @Column(unique = true)
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")
     private String password;
+
+    @ToString.Exclude
+    private List<TodoListDTO> todoListDTOS;
 }
