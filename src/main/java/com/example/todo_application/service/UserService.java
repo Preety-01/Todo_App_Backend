@@ -3,6 +3,7 @@ package com.example.todo_application.service;
 import com.example.todo_application.dto.UserDTO;
 import com.example.todo_application.entity.User;
 import com.example.todo_application.exceptions.UserAlreadyExistsException;
+import com.example.todo_application.exceptions.UserDoesNotExistsException;
 import com.example.todo_application.exceptions.UserTableEmptyException;
 import com.example.todo_application.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -13,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.todo_application.utility.Constants.USER_ALREADY_EXISTS;
-import static com.example.todo_application.utility.Constants.USER_TABLE_EMPTY;
+import static com.example.todo_application.utility.Constants.*;
 
 @Service
 @Transactional
@@ -58,5 +58,20 @@ public class UserService {
             fetchedUsersList.add(userDTO);
         });
         return fetchedUsersList;
+    }
+
+    public UserDTO fetchUser(Integer user_id) throws UserDoesNotExistsException {
+        Optional<User> fetchedUser = userRepository.findById(user_id);
+        User user = fetchedUser.orElseThrow(() -> new UserDoesNotExistsException(USER_DOES_NOT_EXIST));
+        UserDTO existingUser = UserDTO.builder()
+                .user_id(user.getUser_id())
+                .first_name(user.getFirst_name())
+                .last_name(user.getLast_name())
+                .email(user.getEmail())
+                .phone(user.getPhone())
+                .birthDate(user.getBirthDate())
+                .password(user.getPassword())
+                .build();
+        return existingUser;
     }
 }
